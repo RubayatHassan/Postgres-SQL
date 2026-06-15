@@ -116,3 +116,15 @@ INNER JOIN users AS u
 INNER JOIN matches AS m
     ON b.match_id = m.match_id
 ORDER BY b.booking_id;
+
+
+-- Query 5:
+-- Display all users and their booking IDs, including users who have not booked.
+SELECT
+    u.user_id,
+    u.full_name,
+    b.booking_id
+FROM users AS u
+LEFT JOIN bookings AS b
+    ON u.user_id = b.user_id
+ORDER BY u.user_id, b.booking_id;
