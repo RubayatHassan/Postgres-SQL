@@ -101,3 +101,18 @@ SELECT
 FROM bookings
 WHERE payment_status IS NULL
 ORDER BY booking_id;
+
+-- Query 4:
+-- Retrieve match booking details along with the user's full name
+-- and the scheduled match fixture.
+SELECT
+    b.booking_id,
+    u.full_name,
+    m.fixture,
+    b.total_cost
+FROM bookings AS b
+INNER JOIN users AS u
+    ON b.user_id = u.user_id
+INNER JOIN matches AS m
+    ON b.match_id = m.match_id
+ORDER BY b.booking_id;
